@@ -45,8 +45,6 @@ namespace WebMobile
 
             app.UseStaticFiles();
 
-            //app.UseMvcWithDefaultRoute();
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute("default", "{controller=Index}/{action=Index}/{id?}");

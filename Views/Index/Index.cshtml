@@ -6,30 +6,28 @@
         <td width="80"></td>
     </tr>
 
-    @{ foreach (var phone in Model.allPhones)
-        {
-            <tr>
-                <td>
-                    +@phone.number
-                    <div>
-                        @phone.user.surname @phone.user.firstName[0].@phone.user.fatherName[0].
-                        <a href="#" data-toggle="modal" data-target="#editUserForm"
-                           data-user_id="@phone.userId"
-                           data-user_first_name="@phone.user.firstName"
-                           data-user_father_name="@phone.user.fatherName"
-                           data-user_surname="@phone.user.surname"
-                           data-address="@phone.user.address">edit user info</a>
-                    </div>
-                </td>
-                <td align="right">
-                    <a href="#" data-toggle="modal" data-target="#editNumberForm"
-                       data-phone_id="@phone.id"
-                       data-phone_number="@phone.number"
-                       data-user_id="@phone.userId">Edit</a>
-                </td>
-            </tr>
-        }
-    }
+    @{ foreach (var phone in Model.allPhones) {
+        <tr>
+            <td>
+                +@phone.number
+                <div>
+                    @phone.user.surname @phone.user.firstName[0].@phone.user.fatherName[0].
+                    <a href="#" data-toggle="modal" data-target="#editUserForm"
+                       data-user_id="@phone.userId"
+                       data-user_first_name="@phone.user.firstName"
+                       data-user_father_name="@phone.user.fatherName"
+                       data-user_surname="@phone.user.surname"
+                       data-address="@phone.user.address">edit user info</a>
+                </div>
+            </td>
+            <td align="right">
+                <a href="#" data-toggle="modal" data-target="#editNumberForm"
+                   data-phone_id="@phone.id"
+                   data-phone_number="@phone.number"
+                   data-user_id="@phone.userId">Edit</a>
+            </td>
+        </tr>
+    } }
 </table>
 <a href="#" data-toggle="modal" data-target="#editNumberForm" data-phone_id="new">Add new phone number</a> |
 <a href="#" data-toggle="modal" data-target="#editUserForm" data-user_id="new">Add new user</a>
@@ -54,11 +52,9 @@
                     <div class="form-group">
                         <label for="user-select" class="col-form-label">User:</label>
                         <select class="form-control" id="user-select" name="uid">
-                            @{ foreach (var user in Model.allUsers)
-                                {
-                                    <option value="@user.id">@user.surname @user.firstName @user.fatherName</option>
-                                }
-                            }
+                            @{ foreach (var user in Model.allUsers) {
+                                <option value="@user.id">@user.surname @user.firstName @user.fatherName</option>
+                            } }
                         </select>
                     </div>
                 </form>

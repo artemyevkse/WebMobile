@@ -11,8 +11,5 @@ namespace WebMobile.Data.Interfaces
     {
         IEnumerable<Phone> phones { get; }
         IEnumerable<Phone> complexPhones { get; }
-        IEnumerable<Phone> getFavPhones { get; set; }
-
-        Phone GetObjectPhone(int phoneId);
     }
 }

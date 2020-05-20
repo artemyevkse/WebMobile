@@ -14,10 +14,8 @@ namespace WebMobile.Data.Repository
         {
             get
             {
-                using (var db = new DbWebMobile())
-                {
+                using (var db = new DbWebMobile()) {
                     var query = from p in db.Phone
-                                /*where p.ProductID > 25*/
                                 orderby p.number descending
                                 select p;
 
@@ -30,8 +28,7 @@ namespace WebMobile.Data.Repository
         {
             get
             {
-                using (var db = new DbWebMobile())
-                {
+                using (var db = new DbWebMobile()) {
                     var query = from p in db.Phone
                                 join u in db.User on p.userId equals u.id
                                 orderby p.number descending
@@ -42,17 +39,9 @@ namespace WebMobile.Data.Repository
             }
         }
 
-        public IEnumerable<Phone> getFavPhones { get; set; }
-
-        public Phone GetObjectPhone(int phoneId)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool IsNumberExists(string phoneNumber)
         {
-            using (var db = new DbWebMobile())
-            {
+            using (var db = new DbWebMobile()) {
                 var query = from p in db.Phone.Take(1)
                             where p.number == phoneNumber
                             select p;
@@ -63,8 +52,7 @@ namespace WebMobile.Data.Repository
 
         public bool IsExists(int id)
         {
-            using (var db = new DbWebMobile())
-            {
+            using (var db = new DbWebMobile()) {
                 var query = from p in db.Phone
                             where p.id == id
                             select p;
@@ -75,16 +63,14 @@ namespace WebMobile.Data.Repository
 
         public bool AddNumber(Phone phone)
         {
-            using (var db = new DbWebMobile())
-            {
+            using (var db = new DbWebMobile()) {
                 return db.Insert(phone) > 0;
             }
         }
 
         public bool SaveNumber(Phone phone)
         {
-            using (var db = new DbWebMobile())
-            {
+            using (var db = new DbWebMobile()) {
                 return db.Update(phone) > 0;
             }
         }

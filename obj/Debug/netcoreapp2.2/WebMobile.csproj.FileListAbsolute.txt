@@ -28,3 +28,4 @@ C:\Users\Константин\source\repos\WebMobile\WebMobile\obj\Debug\netcore
 C:\Users\Константин\source\repos\WebMobile\WebMobile\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\Константин\source\repos\WebMobile\WebMobile\bin\Debug\netcoreapp2.2\dbsettings.json
 C:\Users\Константин\source\repos\WebMobile\WebMobile\obj\Debug\netcoreapp2.2\WebMobile.csproj.CoreCompileInputs.cache
+C:\Users\Константин\source\repos\WebMobile\WebMobile\obj\Debug\netcoreapp2.2\WebMobile.csprojAssemblyReference.cache
