@@ -1,0 +1,123 @@
+﻿<h1>@ViewBag.Title</h1>
+
+<table border="1">
+    <tr>
+        <td>Phone</td>
+        <td width="80"></td>
+    </tr>
+
+    @{ foreach (var phone in Model.allPhones)
+        {
+            <tr>
+                <td>
+                    +@phone.number
+                    <div>
+                        @phone.user.surname @phone.user.firstName[0].@phone.user.fatherName[0].
+                        <a href="#" data-toggle="modal" data-target="#editUserForm"
+                           data-user_id="@phone.userId"
+                           data-user_first_name="@phone.user.firstName"
+                           data-user_father_name="@phone.user.fatherName"
+                           data-user_surname="@phone.user.surname"
+                           data-address="@phone.user.address">edit user info</a>
+                    </div>
+                </td>
+                <td align="right">
+                    <a href="#" data-toggle="modal" data-target="#editNumberForm"
+                       data-phone_id="@phone.id"
+                       data-phone_number="@phone.number"
+                       data-user_id="@phone.userId">Edit</a>
+                </td>
+            </tr>
+        }
+    }
+</table>
+<a href="#" data-toggle="modal" data-target="#editNumberForm" data-phone_id="new">Add new phone number</a> |
+<a href="#" data-toggle="modal" data-target="#editUserForm" data-user_id="new">Add new user</a>
+
+<!-- Number Edit Modal -->
+<div class="modal fade" id="editNumberForm" tabindex="-1" role="dialog" aria-labelledby="editNumberLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editNumberLabel">Edit number</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" novalidate>
+                    <div class="form-group">
+                        <label for="phone-number" class="col-form-label">Number:</label>
+                        <input type="hidden" class="form-control" id="phone-id" name="pid">
+                        <input type="text" class="form-control" id="phone-number" name="number">
+                    </div>
+                    <div class="form-group">
+                        <label for="user-select" class="col-form-label">User:</label>
+                        <select class="form-control" id="user-select" name="uid">
+                            @{ foreach (var user in Model.allUsers)
+                                {
+                                    <option value="@user.id">@user.surname @user.firstName @user.fatherName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="alert alert-danger" role="alert" id="server_alert">
+                Server Error!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveNumber">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- User Edit Modal -->
+<div class="modal fade" id="editUserForm" tabindex="-1" role="dialog" aria-labelledby="editUserLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editNumberLabel">Edit user</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" novalidate>
+                    <div class="form-group">
+                        <label for="first-name" class="col-form-label">First name:</label>
+                        <input type="hidden" class="form-control" id="user-id" name="id">
+                        <input type="text" class="form-control" id="first-name" name="uname" placeholder="First name">
+                    </div>
+                    <div class="form-group">
+                        <label for="surname" class="col-form-label">Surname:</label>
+                        <input type="text" class="form-control" id="surname" name="sname" placeholder="Surname">
+                    </div>
+                    <div class="form-group">
+                        <label for="surname" class="col-form-label">Father name:</label>
+                        <input type="text" class="form-control" id="father-name" name="fname" placeholder="Father name">
+                    </div>
+                    <div class="form-group">
+                        <label for="surname" class="col-form-label">Address:</label>
+                        <input type="text" class="form-control" id="address" name="address" placeholder="Address">
+                    </div>
+                </form>
+            </div>
+            <div class="alert alert-danger" role="alert" id="server_alert">
+                Server Error!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveUser">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
+
+<script src="~/js/phonelist.js"></script>
